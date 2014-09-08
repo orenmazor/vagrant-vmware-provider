@@ -1,5 +1,4 @@
 require "log4r"
-require 'fission' 
 
 module VagrantPlugins
   module VMwareProvider
