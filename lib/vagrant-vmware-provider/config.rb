@@ -3,15 +3,9 @@ require "vagrant"
 module VagrantPlugins
   module VMwareProvider
     class Config < Vagrant.plugin("2", :config)
-      attr_accessor :memsize, :numvcpus, :vmpcenable, :corespersocket, :displayname, :guestos
+      attr_accessor :memsize, :number_of_virtual_cpus, :vm_pc_enable, :cores_per_socket, :display_name, :guest_os
 
-      def initialize(region_specific=false)
-        @memsize = UNSET_VALUE
-        @numvcpus = UNSET_VALUE
-        @vmpcenable = UNSET_VALUE
-        @corespersocket = UNSET_VALUE
-        @displayname = UNSET_VALUE
-        @guestos = UNSET_VALUE
+      def initialize()
       end
 
       def merge(other)
@@ -21,9 +15,9 @@ module VagrantPlugins
 
       def finalize!
         @memsize = system_memory / 2 unless @memsize
-        @numvcpus = system_cores unless @numvcpus  
-        @vmpcenable = "TRUE" unless @vmpcenable
-        @corespersocket = system_cores unless @corespersocket
+        @number_of_virtual_cpus = system_cores unless @number_of_virtual_cpus  
+        @vm_pc_enable = "TRUE" unless @vm_pc_enable
+        @cores_per_socket = system_cores unless @cores_per_socket
 
         true
       end
