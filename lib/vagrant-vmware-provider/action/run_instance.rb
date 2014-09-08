@@ -14,8 +14,10 @@ module VagrantPlugins
           
           vmpath = env[:machine].box.directory
 
+
           vmpath = vmpath + "/packer-vmware-iso.vmxf"
 
+          env[:ui].info("trying to load *#{vmpath}*")
           env[:ui].info(system("#{ENV['VM_RUN_PATH']} -T ws start \"#{vmpath}\""))
 
           # Terminate the instance if we were interrupted
