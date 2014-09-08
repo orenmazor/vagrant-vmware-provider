@@ -1,7 +1,6 @@
 require "pathname"
 
 require "vagrant-vmware-provider/plugin"
-raise "got here"
 #using vagrant-aws as a template for this
 module VagrantPlugins
   module VMwareProvider
