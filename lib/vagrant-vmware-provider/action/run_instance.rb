@@ -14,6 +14,7 @@ module VagrantPlugins
           
           dump_config(env, config)
 
+          env[:ui].info("HELLO! #{env.inspect}")
           env[:ui].info("HELLO! current box id is *#{env[:machine].id}*")
           vmx_file = env[:machine].box.directory.join("").to_s
 
