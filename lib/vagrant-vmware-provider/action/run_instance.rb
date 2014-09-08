@@ -15,6 +15,7 @@ module VagrantPlugins
           vmpath = env[:machine].box.directory
 
 
+          env[:ui].info(env[:machine].box.public_methods)
           vmpath = vmpath + "/packer-vmware-iso.vmxf"
 
           env[:ui].info("trying to load *#{vmpath}*")
