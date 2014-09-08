@@ -1,7 +1,7 @@
 require "vagrant"
 
 module VagrantPlugins
-  module VMWare
+  module VMwareProvider
     class Config < Vagrant.plugin("2", :config)
       attr_accessor :memsize, :numvcpus, :vmpcenable, :corespersocket, :displayname, :guestos
 
