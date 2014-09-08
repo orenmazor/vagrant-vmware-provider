@@ -2,7 +2,7 @@ require "pathname"
 
 require "vagrant/action/builder"
 
-ENV['VMRUN_PATH'] = "/Applications/VMware\ Fusion.app/Contents/Library/vmrun"
+ENV['VM_RUN_PATH'] = "/Applications/VMware\ Fusion.app/Contents/Library/vmrun"
 
 module VagrantPlugins
   module VMwareProvider

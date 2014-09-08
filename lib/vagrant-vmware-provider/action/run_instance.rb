@@ -16,7 +16,7 @@ module VagrantPlugins
 
           vmpath = vmpath + "/packer-vmware-iso.vmxf"
 
-          `#{ENV[VM_RUN_PATH]} -T ws start "#{vmpath}"`
+          `#{ENV['VM_RUN_PATH']} -T ws start "#{vmpath}"`
 
           # Terminate the instance if we were interrupted
           terminate(env) if env[:interrupted]
