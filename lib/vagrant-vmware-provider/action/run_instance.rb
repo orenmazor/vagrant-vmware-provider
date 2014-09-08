@@ -13,10 +13,7 @@ module VagrantPlugins
           config = env[:machine].provider_config
           
           vmpath = env[:machine].box.directory
-
-
-          env[:ui].info(env[:machine].box.directory + " holla!")
-          vmpath = vmpath.to_s + "/packer-vmware-iso.vmxf"
+          vmpath = vmpath.join("packer-vmware-iso.vmxf").to_s
 
           env[:ui].info("trying to load *#{vmpath}*")
           env[:ui].info(system("#{ENV['VM_RUN_PATH']} -T ws start \"#{vmpath}\""))
