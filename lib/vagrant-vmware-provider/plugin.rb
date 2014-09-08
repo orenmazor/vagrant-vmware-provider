@@ -18,12 +18,12 @@ module VagrantPlugins
     class Plugin < Vagrant.plugin("2")
       name "Vagrant VMWware Provider"
 
-      config(:vmware_provider, :provider) do
+      config(:vmware_desktop, :provider) do
         require_relative "config"
         Config
       end
 
-      provider(:vmware_provider) do
+      provider(:vmware_desktop) do
         # Setup logging and i18n
         setup_logging
 

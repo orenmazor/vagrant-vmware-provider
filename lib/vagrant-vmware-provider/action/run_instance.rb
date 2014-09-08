@@ -13,6 +13,7 @@ module VagrantPlugins
           config = env[:machine].provider_config
           
           env[:ui].info("HELLO! current box id is *#{env[:machine].id}*")
+          env[:ui].info("HELLO! current box directory is *#{env[:machine].box.directory}*")
           vmx_file = env[:machine].box.directory.join("").to_s
 
           # Terminate the instance if we were interrupted
