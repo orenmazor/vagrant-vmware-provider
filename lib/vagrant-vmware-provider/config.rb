@@ -29,7 +29,7 @@ module VagrantPlugins
       end
 
       def validate(machine)
-        raise "who needs errors?"
+        {"VMware Provider" => _detected_errors}
       end
       
       private
