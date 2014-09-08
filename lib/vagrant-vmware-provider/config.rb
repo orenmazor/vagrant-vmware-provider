@@ -24,6 +24,8 @@ module VagrantPlugins
         @numvcpus = system_cores unless @numvcpus  
         @vmpcenable = "TRUE" unless @vmpcenable
         @corespersocket = system_cores unless @corespersocket
+
+        true
       end
 
       def validate(machine)

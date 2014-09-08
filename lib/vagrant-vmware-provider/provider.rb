@@ -4,7 +4,7 @@ require "log4r"
 require "vagrant"
 
 module VagrantPlugins
-  module VMWareProvider
+  module VMwareProvider
     class Provider < Vagrant.plugin("2", :provider)
       def initialize(machine)
         @machine = machine

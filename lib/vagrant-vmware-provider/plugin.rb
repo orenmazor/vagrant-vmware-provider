@@ -13,7 +13,7 @@ if Vagrant::VERSION < "1.2.0"
 end
 
 module VagrantPlugins
-  module VMWare
+  module VMwareProvider
     class Plugin < Vagrant.plugin("2")
       name "Vagrant VMWware Provider"
 
