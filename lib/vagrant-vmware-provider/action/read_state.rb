@@ -23,13 +23,13 @@ module VagrantPlugins
           raise machine.inspect
           # Find the machine
           vmrun_results = `ENV['VM_RUN_CMD'] list`
-          server = aws.servers.get(machine.id)
-          if server.nil? || [:"shutting-down", :terminated].include?(server.state.to_sym)
-            # The machine can't be found
-            @logger.info("Machine not found or terminated, assuming it got destroyed.")
-            machine.id = nil
-            return :not_created
-          end
+          #now what?
+          # if server.nil? || [:"shutting-down", :terminated].include?(server.state.to_sym)
+          #   # The machine can't be found
+          #   @logger.info("Machine not found or terminated, assuming it got destroyed.")
+          #   machine.id = nil
+          #   return :not_created
+          # end
 
           # Return the state
           return server.state.to_sym
