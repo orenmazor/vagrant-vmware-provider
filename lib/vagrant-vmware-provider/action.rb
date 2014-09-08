@@ -102,11 +102,8 @@ module VagrantPlugins
 
       # This action is called to bring the box up from nothing.
       def self.action_up
-        raise "not yet implemented"
         Vagrant::Action::Builder.new.tap do |b|
-          b.use HandleBoxUrl
           b.use ConfigValidate
-          b.use ConnectAWS
           b.use Call, IsCreated do |env1, b1|
             if env1[:result]
               b1.use Call, IsStopped do |env2, b2|
@@ -149,9 +146,8 @@ module VagrantPlugins
       end
 
       # The autoload farm
-      # action_root = Pathname.new(File.expand_path("../action", __FILE__))
-      # autoload :ConnectAWS, action_root.join("connect_aws")
-      # autoload :IsCreated, action_root.join("is_created")
+      action_root = Pathname.new(File.expand_path("../action", __FILE__))
+      autoload :IsCreated, action_root.join("is_created")
       # autoload :IsStopped, action_root.join("is_stopped")
       # autoload :MessageAlreadyCreated, action_root.join("message_already_created")
       # autoload :MessageNotCreated, action_root.join("message_not_created")
