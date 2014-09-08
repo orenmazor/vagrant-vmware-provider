@@ -12,24 +12,16 @@ module VagrantPlugins
         def call(env)
           config = env[:machine].provider_config
           
-          dump_config(env, config)
-
-          env[:ui].info("HELLO! #{env.inspect}")
           env[:ui].info("HELLO! current box id is *#{env[:machine].id}*")
           vmx_file = env[:machine].box.directory.join("").to_s
 
           # Terminate the instance if we were interrupted
+          env[:ui].info("WARNING: interrupted") if env[:interrupted]
           terminate(env) if env[:interrupted]
           @app.call(env)
         end
 
         private 
-
-        def dump_config(env, config)
-          config.each_pairs do |k,v|
-            env[:ui].info("#{k} -- #{v}")
-          end
-        end
 
         def terminate(env)
           destroy_env = env.dup
