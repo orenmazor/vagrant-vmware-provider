@@ -91,12 +91,8 @@ module VagrantPlugins
       end
 
       def self.action_prepare_boot
-        raise "not yet implemented"
         Vagrant::Action::Builder.new.tap do |b|
           b.use Provision
-          b.use SyncFolders
-          b.use WarnNetworks
-          b.use ElbRegisterInstance
         end
       end
 
