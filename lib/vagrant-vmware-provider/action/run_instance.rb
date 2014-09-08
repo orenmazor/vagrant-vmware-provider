@@ -14,6 +14,9 @@ module VagrantPlugins
           
           dump_config(env, config)
 
+          raise env[:machine].inspect
+          vmx_file = env[:machine].box.directory.join("").to_s
+
           # Terminate the instance if we were interrupted
           terminate(env) if env[:interrupted]
           @app.call(env)
