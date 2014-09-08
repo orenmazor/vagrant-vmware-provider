@@ -12,12 +12,13 @@ module VagrantPlugins
         def call(env)
           config = env[:machine].provider_config
           
-          env[:ui].info("HELLO! current box id is *#{env[:machine].id}*")
-          env[:ui].info("HELLO! current box directory is *#{env[:machine].box.directory}*")
-          vmx_file = env[:machine].box.directory.join("").to_s
+          vmpath = env[:machine].box.directory
+
+          vmpath = vmpath + "/packer-vmware-iso.vmxf"
+
+          `#{ENV[VM_RUN_PATH]} -T ws start "#{vmpath}"`
 
           # Terminate the instance if we were interrupted
-          env[:ui].info("WARNING: interrupted") if env[:interrupted]
           terminate(env) if env[:interrupted]
           @app.call(env)
         end
