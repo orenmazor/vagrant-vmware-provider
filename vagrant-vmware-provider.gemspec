@@ -1,15 +1,15 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'vagrant/vmware/provider/version'
+require 'vagrant-vmware-provider/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "vagrant-vmware-provider"
-  spec.version       = Vagrant::Vmware::Provider::VERSION
+  spec.version       = VagrantPlugins::VMwareProvider::VERSION
   spec.authors       = ["Oren Mazor"]
   spec.email         = ["oren.mazor@gmail.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.summary       = %q{basic vmware plugin}
+  spec.description   = %q{basic vmware plugin}
   spec.homepage      = ""
   spec.license       = "MIT"
 

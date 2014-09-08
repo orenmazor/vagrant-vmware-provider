@@ -1,13 +1,12 @@
 require "pathname"
 
 require "vagrant-vmware-provider/plugin"
-
+raise "got here"
 #using vagrant-aws as a template for this
 module VagrantPlugins
-  module AWS
+  module VMwareProvider
     lib_path = Pathname.new(File.expand_path("../vagrant-vmware-provider", __FILE__))
     autoload :Action, lib_path.join("action")
-    autoload :Errors, lib_path.join("errors")
 
     # This returns the path to the source of this plugin.
     #
