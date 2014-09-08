@@ -150,7 +150,7 @@ module VagrantPlugins
       # autoload :MessageWillNotDestroy, action_root.join("message_will_not_destroy")
       # autoload :ReadSSHInfo, action_root.join("read_ssh_info")
       autoload :ReadState, action_root.join("read_state")
-      # autoload :RunInstance, action_root.join("run_instance")
+      autoload :RunInstance, action_root.join("run_instance")
       # autoload :StartInstance, action_root.join("start_instance")
       # autoload :StopInstance, action_root.join("stop_instance")
       # autoload :SyncFolders, action_root.join("sync_folders")
