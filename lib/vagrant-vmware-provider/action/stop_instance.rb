@@ -18,7 +18,7 @@ module VagrantPlugins
 
             vmpath = env[:machine].box.directory
             vmpath = vmpath.join("packer-vmware-iso.vmxf").to_s
-            system("#{ENV['VM_RUN_PATH']} -T ws start \"#{vmpath}\"")
+            system("#{ENV['VM_RUN_PATH']} -T ws stop \"#{vmpath}\"")
           end
 
           @app.call(env)

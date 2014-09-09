@@ -181,7 +181,7 @@ module VagrantPlugins
       autoload :ReadState, action_root.join("read_state")
       autoload :RunInstance, action_root.join("run_instance")
       # autoload :StartInstance, action_root.join("start_instance")
-      # autoload :StopInstance, action_root.join("stop_instance")
+      autoload :StopInstance, action_root.join("stop_instance")
       # autoload :SyncFolders, action_root.join("sync_folders")
       # autoload :TerminateInstance, action_root.join("terminate_instance")
       # autoload :TimedProvision, action_root.join("timed_provision") # some plugins now expect this action to exist
