@@ -20,11 +20,16 @@ module VagrantPlugins
         def read_ssh_info(env)
           return nil if env[:machine].id.nil?
 
-          #we should make this into a middleware that sets the machine file? maybe?
-          machine_vmx_file = env[:machine].box.directory.join("packer-vmware-iso.vmx").to_s
-          vmrun_results = `#{ENV['VM_RUN_PATH']} -T ws readVariable \"#{machine_vmx_file}\" guestVar ip`
-          # read attribute override
-          host_ip = vmrun_results.trim
+          #have to wait!
+          host_ip = nil
+
+          while !host_ip || host_ip == "" do
+            #we should make this into a middleware that sets the machine file? maybe?
+            machine_vmx_file = env[:machine].box.directory.join("packer-vmware-iso.vmx").to_s
+            vmrun_results = `#{ENV['VM_RUN_PATH']} -T ws readVariable \"#{machine_vmx_file}\" guestVar ip`
+            # read attribute override
+            host_ip = vmrun_results.gsub!("\n","")
+          end
 
           return { :host => host_ip, :port => 22 }
         end

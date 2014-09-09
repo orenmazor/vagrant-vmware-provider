@@ -84,7 +84,6 @@ module VagrantPlugins
 
       # This action is called to SSH into the machine.
       def self.action_ssh
-        raise "not yet implemented"
         Vagrant::Action::Builder.new.tap do |b|
           b.use ConfigValidate
           b.use Call, IsCreated do |env, b2|
