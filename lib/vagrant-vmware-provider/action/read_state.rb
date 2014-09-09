@@ -21,7 +21,7 @@ module VagrantPlugins
           return :not_created if machine.id.nil?
 
           # Find the machine
-          vmrun_results = `ENV['VM_RUN_CMD'] list`.read
+          vmrun_results = exec("ENV['VM_RUN_CMD'] list")
           raise vmrun_results
 
 
