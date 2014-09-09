@@ -1,4 +1,5 @@
 require "log4r"
+require 'securerandom'
 
 module VagrantPlugins
   module VMwareProvider
@@ -16,7 +17,12 @@ module VagrantPlugins
           vmpath = vmpath.join("packer-vmware-iso.vmxf").to_s
 
           env[:ui].info("trying to load *#{vmpath}*")
-          system("#{ENV['VM_RUN_PATH']} -T ws start \"#{vmpath}\"")
+          result = system("#{ENV['VM_RUN_PATH']} -T ws start \"#{vmpath}\"")
+
+          if result
+            env[:machine].id = SecureRandom.uuid
+          end
+
 
 
           # Terminate the instance if we were interrupted
