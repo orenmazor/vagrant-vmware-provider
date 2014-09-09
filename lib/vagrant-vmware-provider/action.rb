@@ -21,6 +21,7 @@ module VagrantPlugins
             end
 
             b2.use StopInstance
+            b2.use GracefulHalt
           end
         end
       end
