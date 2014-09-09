@@ -12,29 +12,22 @@ module VagrantPlugins
         end
 
         def call(env)
-          env[:machine_state_id] = read_state(env[:machine])
+          env[:machine_state_id] = read_state(env)
 
           @app.call(env)
         end
 
-        def read_state(machine)
-          return :not_created if machine.id.nil?
+        def read_state(env)
+          return :not_created if env[:machine].id.nil?
 
+          machine_vmx_file = env[:machine].box.directory.join("packer-vmware-iso.vmx").to_s
           # Find the machine
-          vmrun_results = exec("ENV['VM_RUN_CMD'] list")
-          raise vmrun_results
+          vmrun_results = `#{ENV['VM_RUN_PATH']} list`
 
+          machine_running = vmrun_results.gsub("\n","").include?(machine_vmx_file)
 
-          #now what?
-          # if server.nil? || [:"shutting-down", :terminated].include?(server.state.to_sym)
-          #   # The machine can't be found
-          #   @logger.info("Machine not found or terminated, assuming it got destroyed.")
-          #   machine.id = nil
-          #   return :not_created
-          # end
-
-          # Return the state
-          return server.state.to_sym
+          return :stopped unless machine_running 
+          return :running if machine_running
         end
       end
     end
