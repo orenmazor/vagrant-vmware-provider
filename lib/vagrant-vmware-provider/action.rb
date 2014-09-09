@@ -17,7 +17,6 @@ module VagrantPlugins
           b.use Call, IsCreated do |env, b2|
             if !env[:result]
               b2.use MessageNotCreated
-              not_created
               next
             end
 
