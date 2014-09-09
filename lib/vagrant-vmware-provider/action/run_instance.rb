@@ -20,10 +20,8 @@ module VagrantPlugins
           result = system("#{ENV['VM_RUN_PATH']} -T ws start \"#{vmpath}\"")
 
           if result
-            env[:machine].id = SecureRandom.uuid
+            env[:machine].id = SecureRandom.uuid if env[:machine].id.nil?
           end
-
-
 
           # Terminate the instance if we were interrupted
           terminate(env) if env[:interrupted]

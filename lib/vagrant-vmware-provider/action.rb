@@ -66,10 +66,8 @@ module VagrantPlugins
       # resulting state is expected to be put into the `:machine_ssh_info`
       # key.
       def self.action_read_ssh_info
-        raise "not yet implemented"
         Vagrant::Action::Builder.new.tap do |b|
           b.use ConfigValidate
-          b.use ConnectAWS
           b.use ReadSSHInfo
         end
       end
@@ -134,7 +132,7 @@ module VagrantPlugins
               b1.use Call, IsStopped do |env2, b2|
                 if env2[:result]
                   b2.use action_prepare_boot
-                  b2.use StartInstance # restart this instance
+                  b2.use RunInstance # launch a new instance
                 else
                   b2.use MessageAlreadyCreated # TODO write a better message
                 end
@@ -170,14 +168,13 @@ module VagrantPlugins
         end
       end
 
-      # The autoload farm
       action_root = Pathname.new(File.expand_path("../action", __FILE__))
       autoload :IsCreated, action_root.join("is_created")
-      # autoload :IsStopped, action_root.join("is_stopped")
+      autoload :IsStopped, action_root.join("is_stopped")
       # autoload :MessageAlreadyCreated, action_root.join("message_already_created")
       autoload :MessageNotCreated, action_root.join("message_not_created")
       # autoload :MessageWillNotDestroy, action_root.join("message_will_not_destroy")
-      # autoload :ReadSSHInfo, action_root.join("read_ssh_info")
+      autoload :ReadSSHInfo, action_root.join("read_ssh_info")
       autoload :ReadState, action_root.join("read_state")
       autoload :RunInstance, action_root.join("run_instance")
       # autoload :StartInstance, action_root.join("start_instance")
