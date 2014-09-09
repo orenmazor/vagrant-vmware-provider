@@ -25,6 +25,7 @@ module VagrantPlugins
 
       provider(:vmware_desktop) do
         # Setup logging and i18n
+        setup_i18n
         setup_logging
 
         # Return the provider
