@@ -16,7 +16,7 @@ module VagrantPlugins
           b.use ConfigValidate
           b.use Call, IsCreated do |env, b2|
             if !env[:result]
-              b2.use MessageNotCreated
+              env[:ui].info(I18n.t("vagrant_vmware_provider.not_created"))
               next
             end
 
@@ -34,6 +34,7 @@ module VagrantPlugins
               b.use Call, IsCreated do |env2, b3|
                 if !env2[:result]
                   b3.use MessageNotCreated
+                  env[:ui].info(I18n.t("vagrant_vmware_provider.not_created"))
                   next
                 end
               end
