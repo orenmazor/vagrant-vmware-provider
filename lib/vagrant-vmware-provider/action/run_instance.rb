@@ -17,7 +17,7 @@ module VagrantPlugins
           vmpath = vmpath.join("packer-vmware-iso.vmxf").to_s
 
           env[:ui].info("trying to load *#{vmpath}*")
-          result = system("#{ENV['VM_RUN_PATH']} -T ws start \"#{vmpath}\"")
+          result = system("#{ENV['VM_RUN_PATH']} -T ws start \"#{vmpath}\" nogui")
 
           if result
             env[:machine].id = SecureRandom.uuid if env[:machine].id.nil?
