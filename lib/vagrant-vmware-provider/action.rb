@@ -16,7 +16,8 @@ module VagrantPlugins
           b.use ConfigValidate
           b.use Call, IsCreated do |env, b2|
             if !env[:result]
-              env[:ui].info(I18n.t("vagrant_vmware_provider.not_created"))
+              b2.use MessageNotCreated
+              not_created
               next
             end
 
@@ -34,7 +35,6 @@ module VagrantPlugins
               b.use Call, IsCreated do |env2, b3|
                 if !env2[:result]
                   b3.use MessageNotCreated
-                  env[:ui].info(I18n.t("vagrant_vmware_provider.not_created"))
                   next
                 end
               end
@@ -107,6 +107,7 @@ module VagrantPlugins
           b.use ConfigValidate
           b.use Call, IsCreated do |env, b2|
             if !env[:result]
+              not_created!
               b2.use MessageNotCreated
               next
             end
@@ -173,7 +174,7 @@ module VagrantPlugins
       autoload :IsCreated, action_root.join("is_created")
       # autoload :IsStopped, action_root.join("is_stopped")
       # autoload :MessageAlreadyCreated, action_root.join("message_already_created")
-      # autoload :MessageNotCreated, action_root.join("message_not_created")
+      autoload :MessageNotCreated, action_root.join("message_not_created")
       # autoload :MessageWillNotDestroy, action_root.join("message_will_not_destroy")
       # autoload :ReadSSHInfo, action_root.join("read_ssh_info")
       autoload :ReadState, action_root.join("read_state")
