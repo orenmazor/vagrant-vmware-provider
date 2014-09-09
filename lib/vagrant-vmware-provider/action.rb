@@ -23,7 +23,7 @@ module VagrantPlugins
             b2.use StopInstance
             b2.use Call, GracefulHalt, :poweroff, :running do |env2, b3|
               if !env2[:result]
-                b3.use ForcedHalt
+                #and do what?
               end
             end
           end
