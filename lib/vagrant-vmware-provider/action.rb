@@ -21,7 +21,11 @@ module VagrantPlugins
             end
 
             b2.use StopInstance
-            b2.use GracefulHalt
+            b2.use Call, GracefulHalt, :poweroff, :running do |env2, b3|
+              if !env2[:result]
+                b3.use ForcedHalt
+              end
+            end
           end
         end
       end
@@ -104,6 +108,7 @@ module VagrantPlugins
         Vagrant::Action::Builder.new.tap do |b|
           b.use Provision
           b.use SyncedFolders
+          b.use SetHostname 
           # b.use SyncedFolderCleanup 
         end
       end
