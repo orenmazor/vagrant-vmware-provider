@@ -20,9 +20,11 @@ module VagrantPlugins
         def read_state(machine)
           return :not_created if machine.id.nil?
 
-          raise machine.inspect
           # Find the machine
-          vmrun_results = `ENV['VM_RUN_CMD'] list`
+          vmrun_results = `ENV['VM_RUN_CMD'] list`.read
+          raise vmrun_results
+
+
           #now what?
           # if server.nil? || [:"shutting-down", :terminated].include?(server.state.to_sym)
           #   # The machine can't be found
