@@ -32,7 +32,11 @@ module VagrantPlugins
         Provider
       end
 
-    #   # This sets up our log level to be whatever VAGRANT_LOG is.
+      def self.setup_i18n
+        I18n.load_path << File.expand_path("locales/en.yml", VMwareProvider.source_root)
+        I18n.reload!
+      end
+
       def self.setup_logging
         require "log4r"
 

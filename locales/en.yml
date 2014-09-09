@@ -1,0 +1,57 @@
+en:
+  vagrant_vmware_provider:
+    already_status: |-
+      The machine is already %{status}.
+    launching_instance: |-
+      Launching an instance with the following settings...
+    not_created: |-
+      Instance is not created. Please run `vagrant up` first.
+    ready: |-
+      Machine is booted and ready for use!
+    starting: |-
+      Starting the instance...
+    stopping: |-
+      Stopping the instance...
+    terminating: |-
+      Terminating the instance...
+    waiting_for_ready: |-
+      Waiting for instance to become "ready"...
+    waiting_for_ssh: |-
+      Waiting for SSH to become available...
+    will_not_destroy: |-
+      The instance '%{name}' will not be destroyed, since the confirmation
+      was declined.
+
+    states:
+      short_not_created: |-
+        not created
+      long_not_created: |-
+        The instance is not created. Run `vagrant up` to create it.
+
+      short_stopped: |-
+        stopped
+      long_stopped: |-
+        The instance is stopped. Run `vagrant up` to start it.
+
+      short_stopping: |-
+        stopping
+      long_stopping: |-
+        The instance is stopping. Wait until is completely stopped to
+        run `vagrant up` and start it.
+
+      short_pending: |-
+        pending
+      long_pending: |-
+        The instance is pending a start (i.e. this is a transition state).
+
+      short_running: |-
+        running
+      long_running: |-
+        The instance is running. To stop this machine, you can run
+        `vagrant halt`. To destroy the machine, you can run `vagrant destroy`.
+
+      short_pending: |-
+        pending
+      long_pending: |-
+        The instance is still being initialized. To destroy this machine,
+        you can run `vagrant destroy`.
