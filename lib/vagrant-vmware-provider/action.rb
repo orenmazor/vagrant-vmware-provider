@@ -156,6 +156,7 @@ module VagrantPlugins
       autoload :IsCreated, action_root.join("is_created")
       autoload :IsStopped, action_root.join("is_stopped")
       autoload :MessageNotCreated, action_root.join("message_not_created")
+      autoload :MessageAlreadyCreated, action_root.join("message_already_created")
       autoload :ReadSSHInfo, action_root.join("read_ssh_info")
       autoload :ReadState, action_root.join("read_state")
       autoload :RunInstance, action_root.join("run_instance")
