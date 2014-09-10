@@ -101,7 +101,17 @@ module VagrantPlugins
       end
 
       def self.action_ssh_run
-        raise "not yet implemented"
+        Vagrant::Action::Builder.new.tap do |b|
+          b.use ConfigValidate
+          b.use Call, IsCreated do |env, b2|
+            if !env[:result]
+              b2.use MessageNotCreated
+              next
+            end
+
+            b2.use SSHRun
+          end
+        end
       end
 
       def self.action_prepare_boot
