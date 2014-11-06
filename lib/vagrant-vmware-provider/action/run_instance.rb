@@ -14,7 +14,7 @@ module VagrantPlugins
           config = env[:machine].provider_config
           
           vmpath = env[:machine].box.directory
-          vmpath = vmpath.join("packer-vmware-iso.vmxf").to_s
+          vmpath = vmpath.join(Dir[vmpath + "\*.vmxf"].first).to_s
 
           env[:ui].info("trying to load *#{vmpath}*")
           result = system("#{ENV['VM_RUN_PATH']} -T ws start \"#{vmpath}\" nogui")
