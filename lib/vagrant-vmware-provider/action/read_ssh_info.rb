@@ -25,7 +25,7 @@ module VagrantPlugins
 
           while !host_ip || host_ip == "" do
             #we should make this into a middleware that sets the machine file? maybe?
-            machine_vmx_file = env[:machine].box.directory.join("packer-vmware-iso.vmx").to_s
+            machine_vmx_file = vmpath.join(Dir[vmpath + "\*.vmxf"].first).to_s
             vmrun_results = `#{ENV['VM_RUN_PATH']} -T ws readVariable \"#{machine_vmx_file}\" guestVar ip`
             # read attribute override
             host_ip = vmrun_results.gsub!("\n","")
